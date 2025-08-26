@@ -49,6 +49,7 @@ public class GestionCursosApplication implements CommandLineRunner {
                 2. Buscar Estudiante
                 3. Modificar Estudiante
                 4. Eliminar Estudiante
+                5. Salir
                 """);
         var opcion = Integer.parseInt(consola.nextLine());
         return opcion;
@@ -63,15 +64,54 @@ public class GestionCursosApplication implements CommandLineRunner {
                 clientes.forEach( estudiante -> logger.info(estudiante.toString()+sl));
             }
             case 2 ->{
-                logger.info(sl+"Buscar Cliente por su codigo"+sl);
+                logger.info(sl+"Buscar Estudiante por su codigo"+sl);
+                logger.info(sl+"Ingres el id del Alumno que desea buscar: "+sl);
                 var codigo = Integer.parseInt(consola.nextLine());
                 Estudiante estudiante = estudianteService.buscarEstudiantePorId(codigo);
                 if (estudiante != null){
-                    logger.info("Cliente encontrado con exito: " +sl+ estudiante +sl);
+                    logger.info("Estudiante encontrado con exito: " +sl+ estudiante +sl);
                 }else{
-                    logger.info("Cliente no encontrado"+sl+ estudiante +sl);
+                    logger.info("Estudiante no encontrado"+sl+ estudiante +sl);
                 }
             }
+            case 3 ->{
+                logger.info(sl+"Modificar Alumno: "+sl);
+                logger.info(sl+"Ingrese el codigo del Alumno a modificar"+sl);
+                var codigo = Integer.parseInt(consola.nextLine());
+                Estudiante estudiante = estudianteService.buscarEstudiantePorId(codigo);
+                if (estudiante != null){
+                    logger.info("Ingrese el nombre: ");
+                    var nombre = consola.nextLine();
+                    logger.info("Ingrese el apellido: ");
+                    var apellido = consola.nextLine();
+                    logger.info("Ingrese el correo: ");
+                    var correo = consola.nextLine();
+                    estudiante.setNombre(nombre);
+                    estudiante.setApellido(apellido);
+                    estudiante.setCorreo(correo);
+                    estudianteService.guardarEstudiante(estudiante);
+                    logger.info(sl+"Estudiante editado correctamente: "+sl);
+                }else {
+                    logger.info(sl+"Estudiante no encontrado "+sl);
+                }
+            }
+            case 4 -> {
+                logger.info(sl+"Eliminar Cliente"+sl);
+                logger.info("Ingrese el código del Estudiante a eliminar");
+                var codigo = Integer.parseInt(consola.nextLine());
+                var estudiante = estudianteService.buscarEstudiantePorId(codigo);
+                if (estudiante != null){
+                    estudianteService.eliminarEstudiante(estudiante);
+                    logger.info("Estudiante eliminado correctamente"+sl+ estudiante +sl);
+                }else {
+                    logger.info("Estudiante no encontrado"+sl+ estudiante +sl);
+                }
+            }
+            case 5 ->{
+                logger.info(sl+"Saliendo..."+sl);
+                salir = true;
+            }
+            default -> logger.info("Opcion no valida!!!");
         }
         return salir;
     }

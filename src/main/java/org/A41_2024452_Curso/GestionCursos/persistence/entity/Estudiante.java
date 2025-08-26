@@ -13,7 +13,7 @@ import lombok.*;
 public class Estudiante {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer codigoCliente;// permite usar null en vez de 0
+    private Integer id;// permite usar null en vez de 0
     @Column
     private String nombre;
     private String apellido;

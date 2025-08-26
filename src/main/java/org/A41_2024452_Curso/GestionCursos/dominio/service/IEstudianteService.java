@@ -7,6 +7,6 @@ import java.util.List;
 public interface IEstudianteService {
     public List<Estudiante> listarEstudiantes();
     Estudiante buscarEstudiantePorId(Integer codigo);
-    void guardarCliente(Estudiante estudiante);
+    void guardarEstudiante(Estudiante estudiante);
     void eliminarEstudiante(Estudiante estudiante);
 }

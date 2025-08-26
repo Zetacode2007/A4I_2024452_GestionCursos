@@ -21,11 +21,11 @@ public class EstudianteService implements IEstudianteService{
     @Override
     public Estudiante buscarEstudiantePorId(Integer codigo) {
        Estudiante estudiante = crud.findById(codigo).orElse(null);
-        return null;
+        return estudiante;
     }
 
     @Override
-    public void guardarCliente(Estudiante estudiante) {
+    public void guardarEstudiante(Estudiante estudiante) {
         crud.save(estudiante);
     }
 
