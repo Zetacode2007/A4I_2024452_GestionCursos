@@ -49,7 +49,9 @@ public class GestionCursosApplication implements CommandLineRunner {
                 2. Buscar Estudiante
                 3. Modificar Estudiante
                 4. Eliminar Estudiante
-                5. Salir
+                5. Agregar Estudiante
+                6. Listar Cursos
+                7. Salir
                 """);
         var opcion = Integer.parseInt(consola.nextLine());
         return opcion;
@@ -108,6 +110,25 @@ public class GestionCursosApplication implements CommandLineRunner {
                 }
             }
             case 5 ->{
+                logger.info(sl + "Agregar Nuevo Alumno: " + sl);
+                logger.info(sl+"Ingrese el nombre: "+sl);
+                var nombre = consola.nextLine();
+                logger.info(sl+"Ingrese el apellido: "+sl);
+                var apellido = consola.nextLine();
+                logger.info(sl+"Ingrese el correo: "+sl);
+                var correo = consola.nextLine();
+                Estudiante nuevoEstudiante = new Estudiante();
+                nuevoEstudiante.setNombre(nombre);
+                nuevoEstudiante.setApellido(apellido);
+                nuevoEstudiante.setCorreo(correo);
+                estudianteService.guardarEstudiante(nuevoEstudiante);
+                logger.info(sl + "Estudiante agregado correctamente" + sl);
+
+            }
+            case 6 ->{
+
+            }
+            case 7 ->{
                 logger.info(sl+"Saliendo..."+sl);
                 salir = true;
             }
