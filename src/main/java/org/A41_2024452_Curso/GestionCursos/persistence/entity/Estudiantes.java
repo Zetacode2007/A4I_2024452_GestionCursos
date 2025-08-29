@@ -10,7 +10,7 @@ import lombok.*;
 @AllArgsConstructor
 @ToString
 @EqualsAndHashCode//codigo de autenticacion de la entidad
-public class Estudiante {
+public class Estudiantes {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;// permite usar null en vez de 0

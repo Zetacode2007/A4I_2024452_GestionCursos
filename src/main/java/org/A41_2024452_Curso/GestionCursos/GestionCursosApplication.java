@@ -1,22 +1,23 @@
 package org.A41_2024452_Curso.GestionCursos;
 
+import org.A41_2024452_Curso.GestionCursos.dominio.service.ICursoService;
 import org.A41_2024452_Curso.GestionCursos.dominio.service.IEstudianteService;
-import org.A41_2024452_Curso.GestionCursos.persistence.entity.Estudiante;
+import org.A41_2024452_Curso.GestionCursos.persistence.entity.Estudiantes;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.util.List;
 import java.util.Scanner;
 
-@SpringBootApplication
+//@SpringBootApplication
 public class GestionCursosApplication implements CommandLineRunner {
 
     @Autowired
     private IEstudianteService estudianteService;
+    private ICursoService cursoService;
     private static final Logger logger = LoggerFactory.getLogger(GestionCursosApplication.class);
     String sl = System.lineSeparator();
 
@@ -62,14 +63,14 @@ public class GestionCursosApplication implements CommandLineRunner {
         switch (opcion){
             case 1 ->{
                 logger.info(sl+"Listado de los Estudiantes cursando"+sl);
-                List<Estudiante> clientes = estudianteService.listarEstudiantes();
+                List<Estudiantes> clientes = estudianteService.listarEstudiantes();
                 clientes.forEach( estudiante -> logger.info(estudiante.toString()+sl));
             }
             case 2 ->{
                 logger.info(sl+"Buscar Estudiante por su codigo"+sl);
                 logger.info(sl+"Ingres el id del Alumno que desea buscar: "+sl);
                 var codigo = Integer.parseInt(consola.nextLine());
-                Estudiante estudiante = estudianteService.buscarEstudiantePorId(codigo);
+                Estudiantes estudiante = estudianteService.buscarEstudiantePorId(codigo);
                 if (estudiante != null){
                     logger.info("Estudiante encontrado con exito: " +sl+ estudiante +sl);
                 }else{
@@ -80,7 +81,7 @@ public class GestionCursosApplication implements CommandLineRunner {
                 logger.info(sl+"Modificar Alumno: "+sl);
                 logger.info(sl+"Ingrese el codigo del Alumno a modificar"+sl);
                 var codigo = Integer.parseInt(consola.nextLine());
-                Estudiante estudiante = estudianteService.buscarEstudiantePorId(codigo);
+                Estudiantes estudiante = estudianteService.buscarEstudiantePorId(codigo);
                 if (estudiante != null){
                     logger.info("Ingrese el nombre: ");
                     var nombre = consola.nextLine();
@@ -117,15 +118,12 @@ public class GestionCursosApplication implements CommandLineRunner {
                 var apellido = consola.nextLine();
                 logger.info(sl+"Ingrese el correo: "+sl);
                 var correo = consola.nextLine();
-                Estudiante nuevoEstudiante = new Estudiante();
+                Estudiantes nuevoEstudiante = new Estudiantes();
                 nuevoEstudiante.setNombre(nombre);
                 nuevoEstudiante.setApellido(apellido);
                 nuevoEstudiante.setCorreo(correo);
                 estudianteService.guardarEstudiante(nuevoEstudiante);
                 logger.info(sl + "Estudiante agregado correctamente" + sl);
-
-            }
-            case 6 ->{
 
             }
             case 7 ->{

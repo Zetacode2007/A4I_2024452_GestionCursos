@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<h:html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://xmlns.jcp.org/jsf/html"
+        xmlns:f="http://xmlns.jcp.org/jsf/core"
+        xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Gestión de Cursos</title>
+
+        <link rel="stylesheet" href="https://unpkg.com/primeflex@latest/primeflex.css"/>
+        <link rel="stylesheet" href="https://unpkg.com/primeflex@latest/themes/primeone-light.css"/>
+    </h:head>
+
+    <h:body style="background-color: #f4f8fb; font-family: Arial, sans-serif;">
+
+        <div class="flex flex-column align-items-center justify-content-center" style="min-height: 100vh;">
+            <h1 style="color: #2c3e50;">Bienvenido a la Gestión de Cursos</h1>
+            <p style="color: #34495e; font-size: 1.2rem;">Sistema de administración académica</p>
+
+            <div class="flex gap-3 mt-4">
+                <h:form>
+                    <p:commandButton value="Cursos"
+                                     icon="pi pi-book"
+                                     styleClass="ui-button-primary"
+                                     action="/cursos?faces-redirect=true"/>
+                </h:form>
+
+                <h:form>
+                    <p:commandButton value="Estudiantes"
+                                     icon="pi pi-users"
+                                     styleClass="ui-button-success"
+                                     action="/estudiantes?faces-redirect=true"/>
+                </h:form>
+            </div>
+        </div>
+        <p style="color: #34495e; font-size: 1.2rem;">Hecho por: Jose Zeta 2024452</p>
+    </h:body>
+</h:html>

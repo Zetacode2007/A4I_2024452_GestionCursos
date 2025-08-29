@@ -1,7 +1,7 @@
 package org.A41_2024452_Curso.GestionCursos.dominio.service;
 
 import org.A41_2024452_Curso.GestionCursos.persistence.crud.EstudianteCrud;
-import org.A41_2024452_Curso.GestionCursos.persistence.entity.Estudiante;
+import org.A41_2024452_Curso.GestionCursos.persistence.entity.Estudiantes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,24 +13,24 @@ public class EstudianteService implements IEstudianteService{
     private EstudianteCrud crud;
 
     @Override
-    public List<Estudiante> listarEstudiantes() {
-        List<Estudiante> estudiantes = crud.findAll();
+    public List<Estudiantes> listarEstudiantes() {
+        List<Estudiantes> estudiantes = crud.findAll();
         return estudiantes;
     }
 
     @Override
-    public Estudiante buscarEstudiantePorId(Integer codigo) {
-       Estudiante estudiante = crud.findById(codigo).orElse(null);
+    public Estudiantes buscarEstudiantePorId(Integer codigo) {
+       Estudiantes estudiante = crud.findById(codigo).orElse(null);
         return estudiante;
     }
 
     @Override
-    public void guardarEstudiante(Estudiante estudiante) {
+    public void guardarEstudiante(Estudiantes estudiante) {
         crud.save(estudiante);
     }
 
     @Override
-    public void eliminarEstudiante(Estudiante estudiante) {
+    public void eliminarEstudiante(Estudiantes estudiante) {
         crud.delete(estudiante);
     }
 }
